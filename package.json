@@ -1,0 +1,25 @@
+{
+  "name": "translator",
+  "version": "1.0.0",
+  "description": "A module to deal with translations in your app",
+  "main": "index.js",
+  "author": "Imam Harir",
+  "keywords": [
+    "npm",
+    "translation",
+    "i18n"
+  ],
+  "translator": {
+    "folder": "translation",
+    "lang": "en"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxferoo/translator.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node init.js",
+    "test": "node index.test.js"
+  }
+}
