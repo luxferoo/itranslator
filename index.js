@@ -14,7 +14,6 @@ if (!json.translator.hasOwnProperty('lang')) throw new Error('You forgot to add 
  * @param {string} str - the string to translate
  * @returns {string}
  */
-
 module.exports = function (str) {
     var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
