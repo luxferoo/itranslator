@@ -17,11 +17,6 @@ module.exports = function (str) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     var dc = json.translator;
     var config = helper.getConfig(options, dc);
-    var file = helper.getFile(config, dc);
-    try {
-        var message = require(file);
-    } catch (e) {
-        throw new Error('File not found : ' + file);
-    }
-    return helper.processString(message, str, vars);
+    var content = helper.getFileContent(config, dc);
+    return helper.processContent(content, str, vars);
 };

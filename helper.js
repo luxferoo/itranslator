@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 function getConfig(config, dc) {
     return {
         base: process.cwd() + '/' + (config.folder ? config.folder : dc.folder),
@@ -7,41 +5,33 @@ function getConfig(config, dc) {
     }
 }
 
-function getFile(config, dc) {
-    //Check if the translation folder exists
-    if (!fs.existsSync(config.base)) {
-        throw new Error('Translator folder not found : ' + config.base);
+function getFileContent(config, dc) {
+    try {
+        return require(config.base + '/' + config.lang + '.json');
+    } catch (e) {
+        return require(config.base + '/' + dc.lang + '.json');
     }
-    var file = config.base + '/' + config.lang + '.json';
-    /*
-        Check if the file exists
-        if not replace the given lang with the default lang
-    */
-    if (!fs.existsSync(file)) {
-        file = config.base + '/' + dc.lang + '.json';
-    }
-    return file;
 }
 
-function processString(message, string, vars) {
+function processContent(content, string, vars) {
     try {
         var chunks = string.split('.');
         for (var i in chunks) {
-            message = message[chunks[i]];
+            content = content[chunks[i]];
             if (chunks.length - 1 === +i) {
                 for (var j in vars) {
-                    message = message.split('%' + j + '%').join(vars[j])
+                    content = content.split('%' + j + '%').join(vars[j])
                 }
             }
         }
     } catch (e) {
         return string;
     }
-    return message === undefined ? string : message;
+    return content === undefined ? string : content;
 }
 
 module.exports = {
     getConfig: getConfig,
-    getFile: getFile,
-    processString: processString
+    getFileContent: getFileContent,
+    processContent: processContent
 };
