@@ -12,8 +12,9 @@ Using npm :
 npm install itranslator
 ```
 ## Configuration
-1- First You have to add a default translation folder and a default lang in your package.json:
-  "folder" : the default folder where your translation files will be located
+1- The configuration below is required when you provide no lang or folder name value as options when you want to translate a string.
+  First You have to add a default translation folder and a default lang in your package.json:
+  "folder" : the default folder where your translation files will be located.
   "lang" : the default language when you don't specify any lang parameter while using itranslator in your code.
   The translation folder is located at the root of your project.
   

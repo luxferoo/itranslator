@@ -1,16 +1,14 @@
-function getConfig(config, dc) {
+var json = require(process.cwd() + '/package.json');
+
+function getConfig(folder, lang) {
     return {
-        base: process.cwd() + '/' + (config.folder ? config.folder : dc.folder),
-        lang: config.lang ? config.lang : dc.lang
+        base: process.cwd() + '/' + folder,
+        lang: lang
     }
 }
 
-function getFileContent(config, dc) {
-    try {
-        return require(config.base + '/' + config.lang + '.json');
-    } catch (e) {
-        return require(config.base + '/' + dc.lang + '.json');
-    }
+function getFileContent(base, lang) {
+    return require(base + '/' + lang + '.json');
 }
 
 function processContent(content, string, vars) {
@@ -30,8 +28,24 @@ function processContent(content, string, vars) {
     return content === undefined ? string : content;
 }
 
+
+function getPackageFolderLangConfig() {
+    if (!json.hasOwnProperty('translator')) throw new Error('You forgot to add "translator" configuration in your package.json');
+    if (!json.translator.hasOwnProperty('lang')) throw new Error('You forgot to add a default "lang" value under "translator" configuration');
+    return json.translator.lang;
+}
+
+
+function getPackageFolderNameConfig() {
+    if (!json.hasOwnProperty('translator')) throw new Error('You forgot to add "translator" configuration in your package.json');
+    if (!json.translator.hasOwnProperty('folder')) throw new Error('You forgot to add a default "folder" value under "translator" configuration');
+    return json.translator.folder;
+}
+
 module.exports = {
     getConfig: getConfig,
     getFileContent: getFileContent,
-    processContent: processContent
+    processContent: processContent,
+    getPackageFolderNameConfig: getPackageFolderNameConfig,
+    getPackageFolderLangConfig: getPackageFolderLangConfig
 };

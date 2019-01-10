@@ -1,9 +1,12 @@
 {
   "name": "itranslator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple node module to deal with translations in your app",
   "main": "index.js",
   "author": "Imam Harir",
+  "scripts": {
+    "test" : "mocha helper_test.js"
+  },
   "keywords": [
     "npm",
     "translation",
@@ -14,5 +17,12 @@
     "type": "git",
     "url": "https://github.com/luxferoo/translator.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "translator": {
+    "lang": "en",
+    "folder": "translation"
+  }
 }
