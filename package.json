@@ -1,11 +1,11 @@
 {
   "name": "itranslator",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A simple node module to deal with translations in your app",
   "main": "index.js",
   "author": "Imam Harir",
   "scripts": {
-    "test" : "mocha helper_test.js"
+    "test" : "mocha index_test.js"
   },
   "keywords": [
     "npm",
@@ -20,9 +20,5 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^5.2.0"
-  },
-  "translator": {
-    "lang": "en",
-    "folder": "translation"
   }
 }

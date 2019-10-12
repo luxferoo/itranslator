@@ -1,21 +1,47 @@
-'use strict';
+let config;
 
-var helper = require('./helper');
-
-/**
- *
- * @param {string} str - the string to translate
- * @returns {string}
- */
-module.exports = function (str) {
-    var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    var lang =   options.lang ? options.lang : helper.getPackageFolderLangConfig();
-    var translationFolder = options.folder ? options.folder : helper.getPackageFolderNameConfig();
-
-    var config = helper.getConfig(translationFolder, lang);
-    var content = helper.getFileContent(config.base, config.lang);
-
-    return helper.processContent(content, str, vars);
+module.exports = {
+    trans(string, configuration) {
+        const _config = {
+            ...config,
+            ...configuration
+        }
+        checkConfig(_config);
+        const { vars, source } = _config;
+        let _source = source;
+        try {
+            const chunks = string.split('.');
+            for (let i in chunks) {
+                _source = _source[chunks[i]];
+                if (chunks.length - 1 === +i) {
+                    for (let j in vars) {
+                        _source = _source.split('%' + j + '%').join(vars[j])
+                    }
+                }
+            }
+        } catch (e) {
+            return string;
+        }
+        return _source === undefined ? string : _source;
+    },
+    config(configuration) {
+        checkConfig(configuration);
+        config = configuration;
+    }
 };
+
+function checkConfig(config) {
+    if (typeof config !== "object") {
+        throw new Error("configuration must be of type json object.")
+    }
+
+    Object.entries(config).forEach(entry => {
+        if (!["vars", "source"].includes(entry[0])) {
+            throw new Error(entry[0] + " is not a configuration parameter. Only 'vars' and 'source' are supported.")
+        }
+
+        if (["vars", "source"].includes(entry[0]) && typeof entry[1] !== "object") {
+            throw new Error(entry[0] + " must be of type json object.")
+        }
+    })
+}
