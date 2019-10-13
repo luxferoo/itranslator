@@ -7,22 +7,21 @@ module.exports = {
             ...configuration
         }
         checkConfig(_config);
-        const { vars, source } = _config;
-        let _source = source;
+        let { vars, source } = _config;
         try {
             const chunks = string.split('.');
             for (let i in chunks) {
-                _source = _source[chunks[i]];
+                source = source[chunks[i]];
                 if (chunks.length - 1 === +i) {
-                    for (let j in vars) {
-                        _source = _source.split('%' + j + '%').join(vars[j])
-                    }
+                    vars && Object.entries(vars).forEach(entry => {
+                        source = source.replace('%' + entry[0] + '%', entry[1]);
+                    })
                 }
             }
         } catch (e) {
             return string;
         }
-        return _source === undefined ? string : _source;
+        return source === undefined ? string : source;
     },
     config(configuration) {
         checkConfig(configuration);

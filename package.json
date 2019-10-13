@@ -1,6 +1,6 @@
 {
   "name": "itranslator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple node module to deal with translations in your app",
   "main": "index.js",
   "author": "Imam Harir",
