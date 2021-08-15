@@ -1,7 +1,9 @@
 {
   "name": "itranslator",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A simple node module to deal with translations in your app",
+  "types": "lib/index.d.ts",
+  "main": "lib/index",
   "keywords": [
     "npm",
     "translation",
