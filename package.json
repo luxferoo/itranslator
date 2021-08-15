@@ -1,6 +1,6 @@
 {
   "name": "itranslator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple node module to deal with translations in your app",
   "keywords": [
     "npm",
@@ -14,6 +14,9 @@
   },
   "license": "MIT",
   "author": "Imam Harir",
+  "files": [
+    "lib"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest src",
