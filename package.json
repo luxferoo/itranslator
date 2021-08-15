@@ -17,6 +17,7 @@
   "files": [
     "lib"
   ],
+  "main": "index.js",
   "scripts": {
     "test": "jest src",
     "lint": "eslint . --fix",
