@@ -25,8 +25,7 @@
     "build": "rimraf ./lib/* && tsc"
   },
   "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
+    "preset": "ts-jest"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
