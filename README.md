@@ -15,14 +15,14 @@ npm install itranslator
 ```node
 const {
   trans,
-  config
+  setConfig
 } = require('itranslator');
 
 //Returns the same string if no configuration provided
 trans('en.hello'); // "en.hello" 
 
 //You can put a global configuration at the entry point of your app
-config({
+setConfig({
   source : {
     en : {
       hello : "hello"
@@ -34,9 +34,7 @@ trans('en.hello'); // "hello"
 
 //It's also possible to override the global configuration if needed
 trans('it.hello',{
-  vars : {
-    name : 'imam'
-  },
+  vars : new Map().set('name', 'imam'),
   source : {
     it : {
       hello : 'bonjourno %name%'

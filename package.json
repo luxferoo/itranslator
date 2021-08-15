@@ -1,12 +1,7 @@
 {
   "name": "itranslator",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "A simple node module to deal with translations in your app",
-  "main": "index.js",
-  "author": "Imam Harir",
-  "scripts": {
-    "test": "jest index.test.js"
-  },
   "keywords": [
     "npm",
     "translation",
@@ -18,7 +13,27 @@
     "url": "https://github.com/luxferoo/translator.git"
   },
   "license": "MIT",
+  "author": "Imam Harir",
+  "scripts": {
+    "test": "jest src",
+    "lint": "eslint . --fix",
+    "build": "rimraf ./lib/* && tsc"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
   "devDependencies": {
-    "jest": "^27.0.6"
+    "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "jest": "^27.0.6",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.4",
+    "tslib": "^2.3.1",
+    "typescript": "^4.3.5"
   }
 }
