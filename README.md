@@ -26,11 +26,15 @@ setConfig({
   source : {
     en : {
       hello : "hello"
+    },
+    it : { 
+      hello : "bonjourno"
     }
   }
 });
 
 trans('en.hello'); // "hello" 
+trans('it.hello'); // "bonjourno" 
 
 //It's also possible to override the global configuration if needed
 trans('it.hello',{
@@ -41,4 +45,6 @@ trans('it.hello',{
     }
   }
 }); // "bonjourno imam" 
+
+trans('it.hello'); // "bonjourno imam" 
 ```
