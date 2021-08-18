@@ -9,5 +9,6 @@ describe('getValue', () => {
   });
   it('returns undefined', ()=>{
     expect(getValue({a: {b: {c: {}}}}, 'a.b.j')).toBeUndefined();
+    expect(getValue({a: {b: {c: {}}}})).toBeUndefined();
   });
 });
