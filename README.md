@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/itranslator.svg)](https://badge.fury.io/js/itranslator)
+
 # translator
 node module to deal with translation in your app
 
