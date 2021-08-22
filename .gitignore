@@ -1,5 +1,6 @@
 .idea
 .vscode
+coverage
 yarn-error.log
 node_modules
 lib
