@@ -1,6 +1,6 @@
 {
   "name": "itranslator",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "A simple node module to deal with translations in your app",
   "types": "lib/index.d.ts",
   "main": "lib/index",
@@ -20,7 +20,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest src",
+    "test": "jest src --coverage",
     "lint": "eslint . --fix",
     "build": "rimraf ./lib/* && tsc"
   },
